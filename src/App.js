@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import SimpleMap from "./SimpleMap";
+import PlantForm from "./PlantForm";
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
           <h1 className="App-title">Plants!</h1>
             <h2>Planning your garden</h2>
         </header>
+          <PlantForm/>
           <SimpleMap/>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
