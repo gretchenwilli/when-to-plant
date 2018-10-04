@@ -1,4 +1,4 @@
-
+import axios from 'axios'
 
 import * as React from "react";
 
@@ -23,7 +23,7 @@ class PlantForm extends React.Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                    if (result.photos.photo.length !== 0) {
+                    if (result.photos && result.photos.photo.length !== 0) {
                         this.getPhotoUrl(result.photos.photo[0].id);
                     }
                 },
@@ -60,6 +60,19 @@ class PlantForm extends React.Component {
     }
 
     handleSubmit(event) {
+
+        //this.state.value is the input in your websites form
+        //put that where strawberry is
+        let commonName =this.state.value
+        let plantsURL = 'https://plantsdb.xyz/search?Common_Name=' + commonName + '&fields=Drought_Tolerance,Scientific_Name_x,Frost_Free_Days_Minimum,Moisture_Use, Precipitation_Minimum,Precipitation_Maximum,Temperature_Minimum_F,Bloom_Period,Fruit_Seed_Period_Begin,Fruit_Seed_Period_End,Palatable_Browse_Animal,Palatable_Human';
+
+         axios.get(plantsURL)
+             .then(response => alert(JSON.stringify(response)));
+
+
+
+
+
         //  'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=4dd2479d98c250c84c6075528a3292ca&user_id=61021753%40N02&text=Helianthus&format=json&nojsoncallback=1&auth_token=72157698694618142-ee6b6288d91212c5&api_sig=901a7233367e76f431fb2d066d1dcdad'
 
         // 'https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=4dd2479d98c250c84c6075528a3292ca&photo_id=35399230646&format=json&nojsoncallback=1&auth_token=72157698694618142-ee6b6288d91212c5&api_sig=b7bdc74a8594819f6121cdc3ca671578'
